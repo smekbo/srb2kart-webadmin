@@ -1,0 +1,19 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.file
+{
+  margin: 5px;
+  padding: 5px;
+}
+
+.column 
+{
+  display: inline-block;
+}
