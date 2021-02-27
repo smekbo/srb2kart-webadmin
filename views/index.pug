@@ -1,25 +1,37 @@
 extends layout
 
 block content
-  div#data(style="display:none") !{data}
+  //- div#data(style="display:none") !{data}
 
-  h1 SRB Kart Addons
-  p Loaded on (Server info goes here)
-
-  div.upload 
-    form(action="/upload", method="post", enctype="multipart/form-data")
-      h2 Upload an Addon
-      input(type="file", accept=".wad, .pk3, .lua, .jpg", name="addon")
-      p
-        button Submit
+  h1 SRB Kart Manager
 
   div#app
-    table.pure-table.pure-table-horizontal
-      thead
-        tr
-          th Name
-          th Extension
-      tbody
-        tr(v-for="file in files")
-          td {{ file.filename }}
-          td {{ file.extension }}
+    div.status-group
+      div.status-item#server
+        div.status-name Server Status
+        div.status-indicator(v-bind:class="{off : !serverInfo.status, on : serverInfo.status}")
+      div.status-item#map
+        div.status-name Current Map
+        div.status-text {{ serverInfo.currentMap }}
+
+    div.server-controls 
+      h2 Server Controls
+      p Please don't grief with these, I don't want to have to make an authentication system
+      button(v-on:click="restartServer") Restart
+
+    div.upload 
+      form(v-on:submit.prevent, action="/upload", method="POST" enctype="multipart/form-data")
+        h2 Upload an Addon
+        input(type="file", accept=".wad, .pk3, .lua, .jpg", name="addon", id="addon-upload", v-on:change="uploadAddon")
+
+    div.addon-cards
+      div.addon-card(v-for="addon in serverInfo.loadedWads" :key="addon.filename")
+        div.status(v-bind:class="{loaded : addon.loaded, unloaded : !addon.loaded}")
+          div(v-if="addon.loaded") Loaded
+          div(v-if="!addon.loaded") Unloaded      
+        div.filename {{ addon.filename }}
+        div.extension {{ addon.extension }}
+          
+block footer
+  script(src='/javascripts/index-sockets.js')
+  script(src='/javascripts/index-vue.js')

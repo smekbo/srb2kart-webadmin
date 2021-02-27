@@ -2,18 +2,109 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
 a {
   color: #00B7FF;
 }
 
-.file
+/* 
+**********
+STATUS BAR
+**********
+  */
+  .status-group
+  {
+  
+  }
+  .status-group .status-item
+  {
+    background-color: rgb(233, 233, 233);
+    padding: 5px;
+    margin: 10px 10px 10px 0px;
+    display: inline-block;
+    height: 2em;
+    line-height: 2em;
+    text-align: center;
+  }
+  .status-group .status-name
+  {
+    margin-right:10px;
+    float: left;
+    font-weight: bold;
+  }
+  .status-group .status-text
+  {
+    float: right;
+  }
+  .status-group .status-indicator
+  {
+    float:right;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    margin: 5px;
+  }
+  .status-group .status-indicator.off
+  {
+    background-color: rgb(228, 74, 74);
+  }
+  .status-group .status-indicator.on
+  {
+    background-color: rgb(100, 228, 74);
+  }
+
+/* 
+*******************
+SERVER CONTROLS BOX
+*******************
+  */
+  .server-controls
+  {
+    padding: 10px;
+    margin-bottom:20px;
+  }
+
+/* 
+**********
+UPLOAD BOX
+**********
+  */
+.upload
 {
-  margin: 5px;
-  padding: 5px;
+  background-color: rgb(233, 233, 233);
+  padding: 10px;
+  padding-bottom: 40px;
+  margin-bottom:10px;
 }
 
-.column 
+/* 
+***********
+ADDON CARDS
+***********
+  */
+.addon-card 
 {
-  display: inline-block;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid grey;
+}
+.addon-card .filename
+{
+  font-size: 1.5em;
+}
+.addon-card .extension
+{
+  color: rgb(68, 68, 68);
+}
+.addon-card .status
+{
+  padding:10px;
+  float:right;
+}
+.loaded
+{
+  background-color: rgb(177, 168, 255);
+}
+.unloaded
+{
+  background-color: rgb(255, 168, 168);
 }

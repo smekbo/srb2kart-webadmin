@@ -6,7 +6,8 @@ var logger = require('morgan');
 var fileUpload = require('express-fileupload');
 
 var indexRouter = require('./routes/index');
-var kartRouter = require('./routes/kart');
+var addonsRouter = require('./routes/addons');
+var serverRouter = require('./routes/server').router;
 
 var app = express();
 
@@ -26,7 +27,8 @@ app.use(fileUpload({
 //app.use(cors());
 
 app.use('/', indexRouter);
-app.use('/kart', kartRouter);
+app.use('/addons', addonsRouter);
+app.use('/server', serverRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
